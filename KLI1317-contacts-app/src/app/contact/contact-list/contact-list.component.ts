@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Contact} from '../contact';
 import {ContactService} from '../services/contact.service';
+import {ObservableMedia} from '@angular/flex-layout';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-contact-list',
@@ -9,16 +11,15 @@ import {ContactService} from '../services/contact.service';
 })
 export class ContactListComponent implements OnInit {
 
+
   contacts: Contact[];
 
-  constructor(private contactService: ContactService) {
+  constructor(private contactService: ContactService, private router: Router) {
     this.contacts = [];
   }
 
   ngOnInit() {
-   /* this.contacts.push(new Contact(1, "Blah", "Bla"));
-    this.contacts.push(new Contact(1, "Blah2", "Bla2"));
-    this.contacts.push(new Contact(1, "Blah3", "Bla3"));*/
+
    this.contacts = this.contactService.getContacts();
     console.log(this.contacts);
   }
@@ -27,4 +28,7 @@ export class ContactListComponent implements OnInit {
     console.log('Contact Selected: ' + contact.id);
   }
 
+  onContactCreate(){
+    this.router.navigate(['/contacts/new']);
+  }
 }

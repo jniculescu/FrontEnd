@@ -1,0 +1,13 @@
+.contact{
+  padding: 10px;
+}
+
+.cardsContainer{
+  height: 100%;
+}
+
+.AddButton{
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}

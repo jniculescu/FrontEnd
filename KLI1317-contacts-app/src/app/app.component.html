@@ -1,4 +1,38 @@
-<app-toolbar></app-toolbar>
-<app-contact-list></app-contact-list>
+<app-toolbar (menuClick)= "sidenav.toggle()"></app-toolbar>
+<mat-sidenav-container class="example-container" autosize>
 
+    <mat-sidenav #sidenav [mode]="'push'" [opened]="false" class="app-sidenav">
+      <!--- Sidenav contento -->
+      <div class="app-sidenav-header">
+        <mat-icon class="al-icon-size" fxLayoutAlign="center" color="primary">account_circle</mat-icon>
+        <br>
+        <div>
+          <span>
+          Jani Niculescu
+          </span>
+        </div>
+
+      <div>
+        <p>
+          This is SPARTA!
+        </p>
+      </div>
+        <span>Github hiar </span>
+      </div>
+    </mat-sidenav>
+
+<mat-sidenav-content class="app-sidenav-content">
+
+  <div fxLayoutAlign="center">
+  <p>
+    creator of this awsomeness is Jani Niculescu
+  </p>
+  </div>
+
+  <router-outlet></router-outlet>
+ <!-- <div class="AddButton">
+    <button mat-fab color="accent"><mat-icon>add</mat-icon></button>
+  </div> -->
+</mat-sidenav-content>
+</mat-sidenav-container>
 

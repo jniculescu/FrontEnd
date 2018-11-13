@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,13 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  @Output() menuClick = new EventEmitter<any>();
+
+  constructor() {
+    this.menuClick = new  EventEmitter<any>();
+  }
 
   ngOnInit() {
   }
 
-  onMenuClick(){
-
+  onMenuClick()
+  {
+    console.log("WMeny clicked");
+    this.menuClick.emit();
   }
 
 }

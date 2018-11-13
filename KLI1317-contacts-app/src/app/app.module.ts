@@ -11,13 +11,25 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatCardModule} from '@angular/material/card';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ContactDetailComponent } from './contact/contact-detail/contact-detail.component';
+import {RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: 'contacts', component: ContactListComponent},
+  {path: 'contacts/new', component: ContactDetailComponent},
+  {path: '', redirectTo: '/contacts', pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
     ContactListItemComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ContactDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +38,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-
+    MatCardModule,
+    FlexLayoutModule,
+    NgxPaginationModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [ContactService],
   bootstrap: [AppComponent]
