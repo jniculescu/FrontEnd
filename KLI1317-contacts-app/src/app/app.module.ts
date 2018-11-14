@@ -16,6 +16,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ContactDetailComponent } from './contact/contact-detail/contact-detail.component';
 import {RouterModule, Routes} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -42,6 +45,10 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     NgxPaginationModule,
     RouterModule.forRoot(appRoutes),
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [ContactService],
   bootstrap: [AppComponent]

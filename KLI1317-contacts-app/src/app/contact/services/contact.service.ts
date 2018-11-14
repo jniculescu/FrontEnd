@@ -25,7 +25,9 @@ export class ContactService {
   }
   setContacts()
   {
-
+    /*
+    tulevaContact.id = contacts[this.contacts.length + 1].id + 1;
+    * */
   }
 
   removeContact(removeId)

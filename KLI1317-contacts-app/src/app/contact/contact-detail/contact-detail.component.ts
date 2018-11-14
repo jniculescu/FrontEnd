@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {Contact} from '../contact';
 
 @Component({
   selector: 'app-contact-detail',
@@ -8,7 +9,11 @@ import {Router} from '@angular/router';
 })
 export class ContactDetailComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  contact: Contact;
+
+  constructor(private router: Router) {
+    this.contact = new Contact();
+  }
 
   ngOnInit() {
   }
