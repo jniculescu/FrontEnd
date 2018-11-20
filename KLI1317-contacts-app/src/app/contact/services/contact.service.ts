@@ -7,6 +7,9 @@ import {Contact} from '../contact';
 export class ContactService {
 
   contacts: Contact[];
+  newContact : Contact;
+
+ // constructor(private localStorageService: StorageService)
 
   constructor() {
     this.contacts = [];
@@ -22,12 +25,16 @@ export class ContactService {
   getContacts(): Contact[]
   {
     return this.contacts;
+    return this.contactLocalStorage.getContacts();
   }
-  setContacts()
+  setContacts(contact1)
   {
-    /*
-    tulevaContact.id = contacts[this.contacts.length + 1].id + 1;
-    * */
+    this.newContact = contact1;
+    let newId = this.contacts[this.contacts.length -1 ].id + 1;
+    console.log(newId);
+    this.newContact.id = newId;
+    console.log(this.newContact);
+    this.contacts.push(new Contact(this.newContact.id, this.newContact.firstName, this.newContact.lastName, this.newContact.numPhone, this.newContact.email));
   }
 
   removeContact(removeId)

@@ -19,6 +19,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
+import {ToolbarService} from './UI/toolbarserv/toolbar.service';
+import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -50,7 +52,7 @@ const appRoutes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
   ],
-  providers: [ContactService],
+  providers: [ContactService, ToolbarService, ContactLocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

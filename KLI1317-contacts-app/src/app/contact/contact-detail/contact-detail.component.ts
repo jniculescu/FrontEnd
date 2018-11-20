@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Contact} from '../contact';
+import {ContactService} from '../services/contact.service';
+import {ToolbarOptions} from '../../UI/toolbarserv/toolbar-options';
+import {ToolbarService} from '../../UI/toolbarserv/toolbar.service';
 
 @Component({
   selector: 'app-contact-detail',
@@ -9,18 +12,26 @@ import {Contact} from '../contact';
 })
 export class ContactDetailComponent implements OnInit {
 
-  contact: Contact;
+  newContact: Contact;
 
-  constructor(private router: Router) {
-    this.contact = new Contact();
+  constructor(private service: ContactService, private router: Router, private route: ActivatedRoute, private toolbar: ToolbarService) {
+    this.newContact = new Contact();
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+    /*const contactId = this.route.snapshot.paramMap.get('id');
+    if(contactId != null)
+    {*/
+      this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Contacto Appo'));
+   // }
   }
 
   onSave(): void
   {
-    console.log('save function');
+    //this.newContact.id = 9999;
+    this.service.setContacts(this.newContact);
     this.router.navigate(['/contacts']);
+    this.service.getContacts();
   }
 }

@@ -4,22 +4,22 @@
       <div fxLayout="column">
 
         <mat-form-field floatPlaceholder="auto">
-          <input matInput [(ngModel)]="contact.firstName" name="firstName" #firstName="ngModel" type="text" required placeholder="Name">
+          <input matInput [(ngModel)]="this.newContact.firstName" name="firstName" #firstName="ngModel" type="text" required placeholder="Name">
           <mat-error *ngIf="firstName.invalid">Please enter your firstname</mat-error>
         </mat-form-field>
 
         <mat-form-field floatPlaceholder="auto">
-          <input matInput [(ngModel)]="contact.lastName" name="lastName" #lastName="ngModel" type="text" required placeholder="Last Name">
+          <input matInput [(ngModel)]="this.newContact.lastName" name="lastName" #lastName="ngModel" type="text" required placeholder="Last Name">
           <mat-error *ngIf="numPhone.invalid">Please enter lastname</mat-error>
         </mat-form-field>
 
         <mat-form-field floatPlaceholder="auto">
-          <input matInput [(ngModel)]="contact.email" name="email" #email="ngModel" type="text" required placeholder="something@something.com">
+          <input matInput [(ngModel)]="this.newContact.email" name="email" #email="ngModel" type="text" required placeholder="something@something.com">
           <mat-error *ngIf="numPhone.invalid">Please enter valid email</mat-error>
         </mat-form-field>
 
         <mat-form-field floatPlaceholder="auto">
-            <input matInput [(ngModel)]="contact.numPhone" name="numPhone" #numPhone="ngModel" type="tel" required maxlength="15" placeholder="phone">
+            <input matInput [(ngModel)]="this.newContact.numPhone" name="numPhone" #numPhone="ngModel" type="tel" required placeholder="phone">
           <mat-error *ngIf="numPhone.invalid">Please enter valid phone number</mat-error>
         </mat-form-field>
       </div>
