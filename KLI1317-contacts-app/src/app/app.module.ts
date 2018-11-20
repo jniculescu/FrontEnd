@@ -25,6 +25,7 @@ import {ContactLocalStorageService} from './contact/services/contact-local-stora
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
   {path: 'contacts/new', component: ContactDetailComponent},
+  {path: 'contacts/edit/:id', component: ContactDetailComponent},
   {path: '', redirectTo: '/contacts', pathMatch: 'full'}
 ];
 
