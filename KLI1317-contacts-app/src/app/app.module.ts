@@ -21,6 +21,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {ToolbarService} from './UI/toolbarserv/toolbar.service';
 import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [ContactService, ToolbarService, ContactLocalStorageService],
   bootstrap: [AppComponent]

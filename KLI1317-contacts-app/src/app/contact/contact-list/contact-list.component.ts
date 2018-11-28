@@ -22,12 +22,16 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit() {
   this.toolbar.setToolbarOptions(new ToolbarOptions('menu', 'Contacto Appo'));
-   this.contacts = this.contactService.getContacts();
+   //this.contacts = this.contactService.getContacts();
+    this.contactService.getContacts().subscribe(result => {
+      this.contacts = result;
+    });
     console.log(this.contacts);
   }
 
   OnContactSelect(contact: Contact){
     console.log('Contact Selected: ' + contact.id);
+   // this.contacts = this.contactService.getContacts();
     //this.router.navigate(['/contacts/new']);
   }
 

@@ -1,6 +1,7 @@
-<app-toolbar (menuClick)= "sidenav.toggle()"></app-toolbar>
-<mat-sidenav-container class="example-container" autosize>
 
+<app-toolbar (menuClick)= "sidenav.toggle()"></app-toolbar>
+
+<mat-sidenav-container class="example-container" autosize>
     <mat-sidenav #sidenav [mode]="'push'" [opened]="false" class="app-sidenav">
       <!--- Sidenav contento -->
       <div class="app-sidenav-header">
@@ -22,17 +23,14 @@
     </mat-sidenav>
 
 <mat-sidenav-content class="app-sidenav-content">
-
-  <div fxLayoutAlign="center">
-  <p>
-    creator of this awsomeness is Jani Niculescu
-  </p>
-  </div>
-
+<!-- page content -->
   <router-outlet></router-outlet>
- <!-- <div class="AddButton">
-    <button mat-fab color="accent"><mat-icon>add</mat-icon></button>
-  </div> -->
+  <div class="cctext" fxLayoutAlign="center center">
+    <p>
+      creator of this awsomeness is Jani Niculescu
+    </p>
+  </div>
 </mat-sidenav-content>
 </mat-sidenav-container>
+
 

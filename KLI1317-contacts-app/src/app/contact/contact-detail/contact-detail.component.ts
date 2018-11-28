@@ -13,6 +13,7 @@ import {ToolbarService} from '../../UI/toolbarserv/toolbar.service';
 export class ContactDetailComponent implements OnInit {
 
   newContact: Contact;
+  contactId: any;
 
   constructor(private service: ContactService, private router: Router, private route: ActivatedRoute, private toolbar: ToolbarService) {
     this.newContact = new Contact();
@@ -20,17 +21,26 @@ export class ContactDetailComponent implements OnInit {
 
   ngOnInit()
   {
-    const contactId = this.route.snapshot.paramMap.get('id');
-    if (contactId != null) {
+    this.contactId = this.route.snapshot.paramMap.get('id');
+    if (this.contactId != null) {
+      //  contact by id
       this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Edit Contact'));
-
-      if (this.service.getContactById(contactId) !== undefined)
+/*
+      if (this.service.getContactById(this.contactId) !== undefined)
       {
-        this.newContact = this.service.getContactById(contactId);
+        this.newContact = this.service.getContactById(this.contactId);
       } else
         {
         this.router.navigate(['/contacts']);
         }
+        */
+      this.service.getContactById(this.contactId).subscribe(result => {
+        this.newContact = result;
+      }, error => {
+        // failed to find contact ->
+        console.error(error);
+        this.router.navigate(['/contacts']);
+      });
     }
     else {
       this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Create Contact'));
@@ -39,7 +49,14 @@ export class ContactDetailComponent implements OnInit {
 
   onSave(): void
   {
-    this.service.setContacts(this.newContact);
+    if (this.contactId != null)
+    {
+      this.service.editContact(this.newContact);
+    }
+    else
+      {
+        this.service.setContacts(this.newContact);
+      }
     this.router.navigate(['/contacts']);
     this.service.getContacts();
   }

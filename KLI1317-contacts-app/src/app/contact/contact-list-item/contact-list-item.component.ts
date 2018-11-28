@@ -22,18 +22,19 @@ export class ContactListItemComponent implements OnInit {
     console.log(this.contact);
   }
 
-  OnContactSelect(){
+  OnContactSelect()
+  {
     this.contactSelect.emit();
   }
 
-  deleteItem(){
-
+  deleteItem()
+  {
     this.contactService.removeContact(this.contact.id);
   }
 
-  editContact(id)
+  editContact()
   {
-    this.router.navigate(['/contacts/edit/:' + id]);
+    this.router.navigate(['/contacts/edit', this.contact.id]);
   }
 
 }

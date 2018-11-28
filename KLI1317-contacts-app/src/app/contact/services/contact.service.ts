@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Contact} from '../contact';
 import {ContactLocalStorageService} from './contact-local-storage.service';
+import {ContactHttpService} from './contact-http.service';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,17 @@ export class ContactService {
   newContact: Contact;
   contactToEdit: Contact;
 
-  constructor(private contactLocalStorage: ContactLocalStorageService) {
+  constructor(private contactLocalStorage: ContactLocalStorageService, private contactHttpService: ContactHttpService) {
   }
 
-  getContacts(): Contact[]
+ /* getContacts(): Contact[]
   {
-    // return this.contacts;
     return this.contactLocalStorage.getContacts();
+  }*/
+
+  getContacts(): Observable<Contact[]>
+  {
+    return this.contactHttpService.get();
   }
   setContacts(contact1)// : Contact)
   {
@@ -34,10 +40,14 @@ export class ContactService {
      this.contactLocalStorage.editContact(contact);
   }
 
-  getContactById(id: string)
+  /* getContactById(id: string)
   {
     this.contactToEdit = this.contactLocalStorage.getContactById(id);
     this.editContact(this.contactToEdit);
     return this.contactToEdit;
+  }*/
+
+  getContactById(id: string): Observable<Contact> {
+    return this.contactHttpService.getById(id);
   }
 }

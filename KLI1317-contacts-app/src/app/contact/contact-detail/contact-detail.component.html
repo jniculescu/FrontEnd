@@ -1,7 +1,7 @@
 <mat-card>
   <form (ngSubmit)="onSave()" #FormsModule="ngForm">
     <div fxLayout="row" fxLayoutAlign="center start">
-      <div fxLayout="column">
+      <div class="input-box" fxLayout="column">
 
         <mat-form-field floatPlaceholder="auto">
           <input matInput [(ngModel)]="this.newContact.firstName" name="firstName" #firstName="ngModel" type="text" required placeholder="Name">

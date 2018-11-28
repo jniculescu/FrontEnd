@@ -9,9 +9,12 @@ export class ContactLocalStorageService {
   localStorageKey = 'contacts-app';
   newContact: Contact;
   contacts: Contact[];
+  contactById: Contact;
+  editedContact: Contact;
 
   constructor()
-  {/*
+  {
+    /*
     this.contacts = [];
     this.contacts.push(new Contact(1, 'Blah', 'Bla', '040002234', 'blah1@blaaa.com'));
     this.contacts.push(new Contact(2, 'Blah2', 'Bla2', '040034334', 'blah2@blaaa.com'));
@@ -43,14 +46,25 @@ export class ContactLocalStorageService {
       console.log(i);
       if (this.contacts[i].id === Number(id))
       {
-        return this.contacts[i];
+        this.contactById = Object.assign({}, this.contacts[i]);
+        return this.contactById;
       }
     }
   }
 
   editContact(contact: Contact)
   {
+    for (let i = 0; i < this.contacts.length; i++)
+    {
+      console.log(i);
+      if (this.contacts[i].id === Number(contact.id))
+      {
+        this.contacts[i] = contact;
+      }
+    }
 
+    localStorage.removeItem(this.localStorageKey);
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.contacts));
   }
 
   deleteContact(id: number)

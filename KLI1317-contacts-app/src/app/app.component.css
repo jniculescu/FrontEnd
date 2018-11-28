@@ -19,3 +19,9 @@
    bottom: 1rem;
    right: 1rem;
  }
+.cctext
+{
+  position: fixed;
+  bottom: 1rem;
+  right: 30%;
+}
