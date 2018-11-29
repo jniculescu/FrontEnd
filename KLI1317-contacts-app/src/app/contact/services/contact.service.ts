@@ -30,9 +30,10 @@ export class ContactService {
     this.contactLocalStorage.addContact(contact1);
   }
 
-  removeContact(removeId)
+  removeContact(contact: Contact): Observable<any>
   {
-     this.contactLocalStorage.deleteContact(removeId);
+  //   this.contactLocalStorage.deleteContact(removeId);
+    return this.contactHttpService.delete(contact);
   }
 
   editContact(contact: Contact)

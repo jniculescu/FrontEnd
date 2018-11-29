@@ -22,21 +22,23 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit() {
   this.toolbar.setToolbarOptions(new ToolbarOptions('menu', 'Contacto Appo'));
-   //this.contacts = this.contactService.getContacts();
+  this.loadContacts();
+  }
+
+  onContactDeleted(contact: Contact) {
+    console.log('Contact Selected: ' + contact.id);
+    this.loadContacts();
+  }
+
+  onContactCreate() {
+    console.log('Contactlistcomponento: on contactcreate');
+    this.router.navigate(['/contacts/new']);
+  }
+
+  loadContacts()
+  {
     this.contactService.getContacts().subscribe(result => {
       this.contacts = result;
     });
-    console.log(this.contacts);
-  }
-
-  OnContactSelect(contact: Contact){
-    console.log('Contact Selected: ' + contact.id);
-   // this.contacts = this.contactService.getContacts();
-    //this.router.navigate(['/contacts/new']);
-  }
-
-  onContactCreate(){
-    console.log('Contactlistcomponento: on contactcreate');
-    this.router.navigate(['/contacts/new']);
   }
 }

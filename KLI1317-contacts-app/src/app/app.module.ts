@@ -18,7 +18,7 @@ import { ContactDetailComponent } from './contact/contact-detail/contact-detail.
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
+import {MatDialogModule, MatInputModule, MatSnackBarModule} from '@angular/material';
 import {ToolbarService} from './UI/toolbarserv/toolbar.service';
 import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
 import {HttpClientModule} from '@angular/common/http';
@@ -54,6 +54,8 @@ const appRoutes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [ContactService, ToolbarService, ContactLocalStorageService],
   bootstrap: [AppComponent]
