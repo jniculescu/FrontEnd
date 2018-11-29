@@ -1,0 +1,32 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "First",
+      "lastName": "Contact",
+      "numPhone": "0401234567",
+      "email": "first.contact@example.com"
+    },
+    {
+      "id": 2,
+      "firstName": "Second",
+      "lastName": "Contact",
+      "numPhone": "0441234567",
+      "email": "second.contact@example.com"
+    },
+    {
+      "firstName": "Third",
+      "lastName": "Contact",
+      "numPhone": "0501234567",
+      "email": "third.contact@example.com",
+      "id": 5
+    },
+    {
+      "firstName": "Fourth",
+      "lastName": "Contact",
+      "numPhone": "0400123456",
+      "email": "fourth.contact@example.com",
+      "id": 6
+    }
+  ]
+}
