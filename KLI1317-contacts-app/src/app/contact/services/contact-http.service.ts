@@ -4,11 +4,12 @@ import {Observable} from 'rxjs';
 import {Contact} from '../contact';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
+import {ContactProvider} from '../interfaces/contact-provider';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactHttpService {
+export class ContactHttpService implements ContactProvider {
 
   url: string;
 
@@ -28,14 +29,15 @@ export class ContactHttpService {
     }));
   }
 
-  put(contact: Contact): Observable<Contact> {
+  edit(contact: Contact): Observable<Contact> {
     return this.httpClient.put(this.url + '/' + contact.id, contact).pipe(map( response => {
       return response as Contact;
   }));
   }
 
-  post(contact: Contact): Observable<Contact> {
-    return this.httpClient.put(this.url, contact).pipe(map(response => {
+  create(contact: Contact): Observable<Contact> {
+    console.log(contact);
+    return this.httpClient.post(this.url, contact).pipe(map(response => {
       return response as Contact;
     }));
   }

@@ -4,9 +4,12 @@
 
 export const environment = {
   production: false,
-  apiEndpointUrl: 'http://localhost:3000'
+  apiEndpointUrl: 'http://localhost:3000',
+  apiEnabled: true,
 };
 
+
+// json-server --watch db.json
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

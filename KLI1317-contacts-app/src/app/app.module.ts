@@ -22,6 +22,9 @@ import {MatDialogModule, MatInputModule, MatSnackBarModule} from '@angular/mater
 import {ToolbarService} from './UI/toolbarserv/toolbar.service';
 import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ContactProvider} from './contact/interfaces/contact-provider';
+import {ContactHttpService} from './contact/services/contact-http.service';
+import {environment} from '../environments/environment';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -57,7 +60,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatDialogModule,
   ],
-  providers: [ContactService, ToolbarService, ContactLocalStorageService],
+  providers: [ContactService, ToolbarService, ContactLocalStorageService, {provide: ContactProvider, useClass: environment.apiEnabled ? ContactHttpService : ContactLocalStorageService}, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

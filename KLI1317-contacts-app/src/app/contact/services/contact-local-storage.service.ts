@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Contact} from '../contact';
+import {ContactProvider} from '../interfaces/contact-provider';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactLocalStorageService {
+export class ContactLocalStorageService implements ContactProvider{
 
   localStorageKey = 'contacts-app';
   newContact: Contact;
@@ -14,16 +16,6 @@ export class ContactLocalStorageService {
 
   constructor()
   {
-    /*
-    this.contacts = [];
-    this.contacts.push(new Contact(1, 'Blah', 'Bla', '040002234', 'blah1@blaaa.com'));
-    this.contacts.push(new Contact(2, 'Blah2', 'Bla2', '040034334', 'blah2@blaaa.com'));
-    this.contacts.push(new Contact(3, 'Blah3', 'Bla3', '040054754', 'blah3@blaaa.com'));
-    this.contacts.push(new Contact(4, 'Blah4', 'Bla4', '040004564', 'blah4@blaaa.com'));
-    this.contacts.push(new Contact(5, 'Blah5', 'Bla5', '040045646', 'blah5@blaaa.com'));
-    this.contacts.push(new Contact(6, 'Blah6', 'Bla6', '044564564', 'blah6@blaaa.com'));
-    this.contacts.push(new Contact(7, 'Blah7', 'Bla7', '040064563', 'blah7@blaaa.com'));
-    */
     if (!localStorage.getItem(this.localStorageKey))
     {
       localStorage.setItem(this.localStorageKey, JSON.stringify([]));
@@ -33,13 +25,13 @@ export class ContactLocalStorageService {
     this.contacts = JSON.parse(storageElement);
   }
 
-  getContacts(): Contact[] {
+  get(): Observable<Contact[]> {
    // const storageElement = localStorage.getItem(this.localStorageKey);
    // const contacts = JSON.parse(storageElement);
-    return this.contacts;
+    return of(this.contacts);
   }
 
-  getContactById(id: string): Contact
+  getById(id: string): Observable<Contact>
   {
     for (let i = 0; i < this.contacts.length; i++)
     {
@@ -47,12 +39,12 @@ export class ContactLocalStorageService {
       if (this.contacts[i].id === Number(id))
       {
         this.contactById = Object.assign({}, this.contacts[i]);
-        return this.contactById;
+        return of(this.contactById);
       }
     }
   }
 
-  editContact(contact: Contact)
+  edit(contact: Contact): Observable<Contact>
   {
     for (let i = 0; i < this.contacts.length; i++)
     {
@@ -65,23 +57,26 @@ export class ContactLocalStorageService {
 
     localStorage.removeItem(this.localStorageKey);
     localStorage.setItem(this.localStorageKey, JSON.stringify(this.contacts));
+
+    return of(contact);
   }
 
-  deleteContact(id: number)
+  delete(contact: Contact): Observable<any>
   {
-    console.log(id + ' removing this id');
+    console.log(contact.id + ' removing this id');
 
     for (let i = 0; i < this.contacts.length; i++)
     {
       console.log(i);
-      if (this.contacts[i].id === id)
+      if (this.contacts[i].id === contact.id)
       {
         this.contacts.splice(i, 1);
       }
     }
+    return of(contact);
   }
 
-  addContact(contact: Contact)
+  create(contact: Contact): Observable<Contact>
   {
      let lastId = 1;
 
@@ -95,5 +90,7 @@ export class ContactLocalStorageService {
 
     localStorage.removeItem(this.localStorageKey);
     localStorage.setItem(this.localStorageKey, JSON.stringify(this.contacts));
+
+    return of(contact);
   }
 }

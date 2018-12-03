@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Contact} from '../contact';
-import {ContactLocalStorageService} from './contact-local-storage.service';
-import {ContactHttpService} from './contact-http.service';
 import {Observable} from 'rxjs';
+import {ContactProvider} from '../interfaces/contact-provider';
 
 @Injectable({
   providedIn: 'root'
@@ -11,44 +10,30 @@ export class ContactService {
 
   contacts: Contact[];
   newContact: Contact;
-  contactToEdit: Contact;
 
-  constructor(private contactLocalStorage: ContactLocalStorageService, private contactHttpService: ContactHttpService) {
+  constructor(private contactProvider: ContactProvider) {
   }
-
- /* getContacts(): Contact[]
-  {
-    return this.contactLocalStorage.getContacts();
-  }*/
 
   getContacts(): Observable<Contact[]>
   {
-    return this.contactHttpService.get();
+    return this.contactProvider.get();
   }
-  setContacts(contact1)// : Contact)
+  setContacts(contact1): Observable<Contact>
   {
-    this.contactLocalStorage.addContact(contact1);
+    return this.contactProvider.create(contact1);
   }
 
   removeContact(contact: Contact): Observable<any>
   {
-  //   this.contactLocalStorage.deleteContact(removeId);
-    return this.contactHttpService.delete(contact);
+    return this.contactProvider.delete(contact);
   }
 
-  editContact(contact: Contact)
+  editContact(contact: Contact): Observable<Contact>
   {
-     this.contactLocalStorage.editContact(contact);
+    return this.contactProvider.edit(contact);
   }
-
-  /* getContactById(id: string)
-  {
-    this.contactToEdit = this.contactLocalStorage.getContactById(id);
-    this.editContact(this.contactToEdit);
-    return this.contactToEdit;
-  }*/
 
   getContactById(id: string): Observable<Contact> {
-    return this.contactHttpService.getById(id);
+    return this.contactProvider.getById(id);
   }
 }
