@@ -12,6 +12,7 @@ import {ContactProvider} from '../interfaces/contact-provider';
 export class ContactHttpService implements ContactProvider {
 
   url: string;
+  contacts: any;
 
   constructor(private httpClient: HttpClient) {
     this.url = environment.apiEndpointUrl + '/contacts';
@@ -37,7 +38,9 @@ export class ContactHttpService implements ContactProvider {
 
   create(contact: Contact): Observable<Contact> {
     console.log(contact);
+
     return this.httpClient.post(this.url, contact).pipe(map(response => {
+      console.log(contact);
       return response as Contact;
     }));
   }

@@ -51,11 +51,21 @@ export class ContactDetailComponent implements OnInit {
   {
     if (this.contactId != null)
     {
-      this.service.editContact(this.newContact);
+      this.service.editContact(this.newContact).subscribe(result => {
+        this.newContact = result;
+      }, error => {
+        console.error(error);
+      this.router.navigate(['/contacts']);
+    });
     }
     else
       {
-        this.service.setContacts(this.newContact);
+        this.service.setContacts(this.newContact).subscribe(result => {
+          this.newContact = result;
+        }, error => {
+          console.error(error);
+          this.router.navigate(['/contacts']);
+        });
       }
     this.router.navigate(['/contacts']);
     this.service.getContacts();

@@ -59,6 +59,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     MatSnackBarModule,
     MatDialogModule,
+
   ],
   providers: [ContactService, ToolbarService, ContactLocalStorageService, {provide: ContactProvider, useClass: environment.apiEnabled ? ContactHttpService : ContactLocalStorageService}, ],
   bootstrap: [AppComponent]
