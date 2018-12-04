@@ -3,6 +3,8 @@ import {Contact} from '../contact';
 import {ContactService} from '../services/contact.service';
 import {Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
+import {ToolbarOptions} from '../../UI/toolbarserv/toolbar-options';
+import {ToolbarService} from '../../UI/toolbarserv/toolbar.service';
 
 @Component({
   selector: 'app-contact-list-item',
@@ -45,14 +47,18 @@ export class ContactListItemComponent implements OnInit {
   {
     this.contactService.removeContact(this.contact).subscribe(() => {
       this.snackBar.open('Contact Removed',
-        this.contact.firstName + ' ' + this.contact.lastName,{
+        this.contact.firstName + ' ' + this.contact.lastName,
+        {
       duration: 3000,
         verticalPosition: 'top',
-        horizontalPosition:  'center'
+          horizontalPosition:  'center'
       });
       this.contactDeleted.emit(this.contact);
-    })
-
+    });
   }
 
+  openMap()
+  {
+    this.router.navigate(['contacts/map', {address: this.contact.address, city: this.contact.city}]);
+  }
 }

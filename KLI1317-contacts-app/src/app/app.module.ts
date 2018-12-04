@@ -25,11 +25,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {ContactProvider} from './contact/interfaces/contact-provider';
 import {ContactHttpService} from './contact/services/contact-http.service';
 import {environment} from '../environments/environment';
+import { ContactMapComponent } from './contact/contact-map/contact-map.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
   {path: 'contacts/new', component: ContactDetailComponent},
   {path: 'contacts/edit/:id', component: ContactDetailComponent},
+  {path: 'contacts/map', component: ContactMapComponent},
   {path: '', redirectTo: '/contacts', pathMatch: 'full'}
 ];
 
@@ -39,7 +42,9 @@ const appRoutes: Routes = [
     ContactListComponent,
     ContactListItemComponent,
     ToolbarComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    ContactMapComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,

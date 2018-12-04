@@ -41,8 +41,7 @@ export class ContactDetailComponent implements OnInit {
         console.error(error);
         this.router.navigate(['/contacts']);
       });
-    }
-    else {
+    } else {
       this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Create Contact'));
     }
   }
@@ -53,6 +52,7 @@ export class ContactDetailComponent implements OnInit {
     {
       this.service.editContact(this.newContact).subscribe(result => {
         this.newContact = result;
+        this.router.navigate(['/contacts']);
       }, error => {
         console.error(error);
       this.router.navigate(['/contacts']);
@@ -62,12 +62,11 @@ export class ContactDetailComponent implements OnInit {
       {
         this.service.setContacts(this.newContact).subscribe(result => {
           this.newContact = result;
+          this.router.navigate(['/contacts']);
         }, error => {
           console.error(error);
           this.router.navigate(['/contacts']);
         });
       }
-    this.router.navigate(['/contacts']);
-    this.service.getContacts();
   }
 }
