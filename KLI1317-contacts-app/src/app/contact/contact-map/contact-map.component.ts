@@ -29,7 +29,8 @@ export class ContactMapComponent implements OnInit {
     this.createMapUrl();
   }
 
-  createMapUrl(){
+  createMapUrl()
+  {
     const googleMapsUrlBase = 'https://www.google.com/maps?q=';
     const googleMapsUrlParams = '&output=embed';
     this.mapUrl = googleMapsUrlBase + this.address + this.city + googleMapsUrlParams;

@@ -15,6 +15,7 @@ export class ContactListComponent implements OnInit {
 
 
   contacts: Contact[];
+  p: number;
 
   constructor(private contactService: ContactService, private router: Router, private  toolbar: ToolbarService) {
     this.contacts = [];

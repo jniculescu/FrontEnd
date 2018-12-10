@@ -25,15 +25,6 @@ export class ContactDetailComponent implements OnInit {
     if (this.contactId != null) {
       //  contact by id
       this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Edit Contact'));
-/*
-      if (this.service.getContactById(this.contactId) !== undefined)
-      {
-        this.newContact = this.service.getContactById(this.contactId);
-      } else
-        {
-        this.router.navigate(['/contacts']);
-        }
-        */
       this.service.getContactById(this.contactId).subscribe(result => {
         this.newContact = result;
       }, error => {

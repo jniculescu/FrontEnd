@@ -1,39 +1,41 @@
 {
   "contacts": [
-    
-{
+    {
       "id": 1,
       "firstName": "First",
       "lastName": "Contact",
       "numPhone": "0401234567",
-      "email": "first.contact@example.com"
-, "address": "Tyysterniementie 1", "postalCode": "53920", "city": "Lappeenranta"   },
-    
-{
-      "id": 2,
-      "firstName": "Blah",
-      "lastName": "Contact",
-      "numPhone": "04012343342",
-      "email": "arfetgh.contact@example.com"
-
-, "address": "Tyysterniementie 1", "postalCode": "53920", "city": "Lappeenranta"    },
-    
-{
+      "email": "first.contact@example.com",
+      "address": "Tyysterniementie 1",
+      "postalCode": "53920",
+      "city": "Lappeenranta"
+    },
+    {
       "id": 3,
       "firstName": "dede",
       "lastName": "Contact",
       "numPhone": "04012343432",
-      "email": "dede.contact@example.com"
- 
-, "address": "Tyysterniementie 1", "postalCode": "53920", "city": "Lappeenranta"   },
-    
-{
+      "email": "dede.contact@example.com",
+      "address": "Tyysterniementie 1",
+      "postalCode": "53920",
+      "city": "Lappeenranta"
+    },
+    {
       "firstName": "Fourth",
       "lastName": "Contact",
       "numPhone": "0400123456",
       "email": "fourth.contact@example.com",
-      "id": 6
- 
-, "address": "Tyysterniementie 1", "postalCode": "53920", "city": "Lappeenranta"  }
+      "id": 6,
+      "address": "Tyysterniementie 1",
+      "postalCode": "53920",
+      "city": "Lappeenranta"
+    },
+    {
+      "firstName": "k",
+      "lastName": "k",
+      "numPhone": "k",
+      "email": "k",
+      "id": 7
+    }
   ]
 }

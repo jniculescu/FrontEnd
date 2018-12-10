@@ -27,6 +27,7 @@ import {ContactHttpService} from './contact/services/contact-http.service';
 import {environment} from '../environments/environment';
 import { ContactMapComponent } from './contact/contact-map/contact-map.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { ConfirmDialogComponent } from './UI/confirm-dialog/confirm-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     ToolbarComponent,
     ContactDetailComponent,
     ContactMapComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,11 @@ const appRoutes: Routes = [
     MatDialogModule,
 
   ],
-  providers: [ContactService, ToolbarService, ContactLocalStorageService, {provide: ContactProvider, useClass: environment.apiEnabled ? ContactHttpService : ContactLocalStorageService}, ],
+  entryComponents: [
+    ConfirmDialogComponent
+  ],
+  providers: [ContactService, ToolbarService, ContactLocalStorageService,
+    {provide: ContactProvider, useClass: environment.apiEnabled ? ContactHttpService : ContactLocalStorageService}, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

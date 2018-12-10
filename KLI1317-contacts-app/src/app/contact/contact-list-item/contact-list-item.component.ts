@@ -3,8 +3,7 @@ import {Contact} from '../contact';
 import {ContactService} from '../services/contact.service';
 import {Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
-import {ToolbarOptions} from '../../UI/toolbarserv/toolbar-options';
-import {ToolbarService} from '../../UI/toolbarserv/toolbar.service';
+import {ConfirmDialogComponent} from '../../UI/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-contact-list-item',
@@ -27,15 +26,19 @@ export class ContactListItemComponent implements OnInit {
 
   deleteItem()
   {
-    /*
-    const dialogRef = this.dialog.open(ConfirmDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
-    if(result)
-    {
+    let contactName = this.contact.lastName;
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {name: contactName},
+    });
 
-    }})
-     */
-    this.removeContact();
+    dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      console.log('Removing Contact');
+      this.removeContact();
+    }
+    else {
+      console.log('Removing Cancelled');
+    }});
   }
 
   editContact()
