@@ -10,17 +10,32 @@
 
         <mat-form-field floatPlaceholder="auto">
           <input matInput [(ngModel)]="this.newContact.lastName" name="lastName" #lastName="ngModel" type="text" required placeholder="Last Name">
-          <mat-error *ngIf="numPhone.invalid">Please enter lastname</mat-error>
+          <mat-error *ngIf="lastName.invalid">Please enter lastname</mat-error>
         </mat-form-field>
 
         <mat-form-field floatPlaceholder="auto">
           <input matInput [(ngModel)]="this.newContact.email" name="email" #email="ngModel" type="text" required placeholder="something@something.com">
-          <mat-error *ngIf="numPhone.invalid">Please enter valid email</mat-error>
+          <mat-error *ngIf="email.invalid">Please enter valid email</mat-error>
         </mat-form-field>
 
         <mat-form-field floatPlaceholder="auto">
             <input matInput [(ngModel)]="this.newContact.numPhone" name="numPhone" #numPhone="ngModel" type="tel" required placeholder="phone">
           <mat-error *ngIf="numPhone.invalid">Please enter valid phone number</mat-error>
+        </mat-form-field>
+
+        <mat-form-field floatPlaceholder="auto">
+          <input matInput [(ngModel)]="this.newContact.address" name="address" #address="ngModel" type="text" required placeholder="Address">
+          <mat-error *ngIf="address.invalid">Please enter valid Address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field floatPlaceholder="auto">
+          <input matInput [(ngModel)]="this.newContact.postalCode" name="postalCode" #postalCode="ngModel" type="text" required placeholder="postal code">
+          <mat-error *ngIf="postalCode.invalid">Please enter valid Postal Code</mat-error>
+        </mat-form-field>
+
+        <mat-form-field floatPlaceholder="auto">
+          <input matInput [(ngModel)]="this.newContact.city" name="city" #city="ngModel" type="text" required placeholder="city">
+          <mat-error *ngIf="city.invalid">Please enter valid phone number</mat-error>
         </mat-form-field>
       </div>
     </div>

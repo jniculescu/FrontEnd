@@ -8,4 +8,5 @@ export interface IContactProvider {
   edit(contact: Contact): Observable<Contact>;
   create(contact: Contact): Observable<Contact>;
   delete(contact: Contact): Observable<any>;
+  search(searchText): Observable<Contact[]>;
 }

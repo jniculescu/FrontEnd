@@ -36,4 +36,8 @@ export class ContactService {
   getContactById(id: string): Observable<Contact> {
     return this.contactProvider.getById(id);
   }
+  searchContact(searchText): Observable<Contact[]>
+  {
+    return this.contactProvider.search(searchText);
+  }
 }

@@ -28,6 +28,7 @@ import {environment} from '../environments/environment';
 import { ContactMapComponent } from './contact/contact-map/contact-map.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ConfirmDialogComponent } from './UI/confirm-dialog/confirm-dialog.component';
+import { ErrorDialogComponent } from './UI/error-dialog/error-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     ContactDetailComponent,
     ContactMapComponent,
     SafeUrlPipe,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,

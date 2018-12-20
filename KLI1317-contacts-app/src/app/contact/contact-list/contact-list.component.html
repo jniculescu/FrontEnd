@@ -1,12 +1,17 @@
+<div class="searchBar" fxLayoutAlign="centre">
+  <mat-form-field fxLayoutAlign="centre" class="search">
+    <input matInput [(ngModel)]="this.searchText" fxLayoutAlign="centre" placeholder="Search">
+  </mat-form-field>
+  <button fxLayoutAlign="centre" class="searchButton" mat-raised-button (click)="SearchByName()">Search</button>
+  <button fxLayoutAlign="centre" class="searchButton" mat-raised-button (click)="loadContacts()">Reset</button>
+</div>
+
 <div class="al-card-padding" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px" fxLayout.md = "row"  fxLayout.xs = "column" fxLayout.lt-md ="column" fxLayout.lt-sm="column">
   <app-contact-list-item *ngFor="let contact of contacts | paginate: {itemsPerPage: 3, currentPage: p}" [contact]="contact"
                          (contactDeleted)="onContactDeleted($event)" class="contact" fxFlexAlign="center center"></app-contact-list-item>
 </div>
 <div class="pagiControls">
   <pagination-controls (pageChange)="p = $event" fxLayoutAlign="center"></pagination-controls>
-</div>
-<div class="searchBar">
-
 </div>
 <div class="AddButton">
   <button mat-fab color="accent" (click)="onContactCreate()"><mat-icon>add</mat-icon></button>

@@ -2,7 +2,7 @@
 <app-toolbar (menuClick)= "sidenav.toggle()"></app-toolbar>
 
 <mat-sidenav-container class="example-container" autosize>
-    <mat-sidenav #sidenav [mode]="'push'" [opened]="false" class="app-sidenav">
+    <mat-sidenav #sidenav [mode]="'side'" [opened]="false" class="app-sidenav">
       <!--- Sidenav contento -->
       <div class="app-sidenav-header">
         <mat-icon class="al-icon-size" fxLayoutAlign="center" color="primary">account_circle</mat-icon>
@@ -15,10 +15,10 @@
 
       <div>
         <p>
-          This is SPARTA!
+          Admin
         </p>
       </div>
-        <span>Github hiar </span>
+        <a href="https://github.com/jniculescu/FrontEnd">Github</a>
       </div>
     </mat-sidenav>
 

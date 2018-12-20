@@ -12,7 +12,8 @@ export class ContactLocalStorageService implements ContactProvider{
   newContact: Contact;
   contacts: Contact[];
   contactById: Contact;
-  editedContact: Contact;
+  searchedContact: Contact;
+  foundContact: Contact[];
 
   constructor()
   {
@@ -92,5 +93,34 @@ export class ContactLocalStorageService implements ContactProvider{
     localStorage.setItem(this.localStorageKey, JSON.stringify(this.contacts));
 
     return of(contact);
+  }
+
+  search(searchText): Observable<Contact[]>
+  {
+    this.foundContact = [];
+
+    for (let i = 0; i < this.contacts.length; i++)
+    {
+      let firstNameUP = (this.contacts[i].firstName).toUpperCase();
+      console.log(i);
+      if (firstNameUP === (searchText).toUpperCase())
+      {
+        console.log("match found");
+        this.searchedContact = this.contacts[i];
+        this.foundContact.push(this.searchedContact);
+        console.log(this.foundContact);
+        return of(this.foundContact);
+      }
+    }
+    if(this.foundContact.length > 0)
+    {
+      console.log(this.foundContact);
+      return of(this.foundContact);
+    }
+    else
+    {
+      //if nothing found. return full list.
+      return of(this.contacts);
+    }
   }
 }
